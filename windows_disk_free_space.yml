@@ -1,7 +1,7 @@
 - module: windows
   metricsets:
     - perfmon
-  period: 30s
+  period: 300s
   perfmon.counters:
 ### Monitor Disk Free Space ####
     - instance_label: Logical.Disk.Counter
