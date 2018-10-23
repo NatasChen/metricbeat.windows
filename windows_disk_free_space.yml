@@ -1,0 +1,21 @@
+- module: windows
+  metricsets:
+    - perfmon
+  period: 30s
+  perfmon.counters:
+### Monitor Disk Free Space ####
+    - instance_label: Logical.Disk.Counter
+      measurement_label: Free.LogicalDiskC.Space.pct
+      query: '\LogicalDisk(c:)\% Free Space'
+
+    - instance_label: Logical.Disk.Counter
+      measurement_label: Free.LogicalDiskC.Space.megabytes
+      query: '\LogicalDisk(c:)\Free Megabytes'
+
+    - instance_label: Logical.Disk.Counter
+      measurement_label: Free.LogicalDiskD.Space.pct
+      query: '\LogicalDisk(d:)\% Free Space'
+
+    - instance_label: Logical.Disk.Counter
+      measurement_label: Free.LogicalDiskD.Space.megabytes
+      query: '\LogicalDisk(d:)\Free Megabytes'
