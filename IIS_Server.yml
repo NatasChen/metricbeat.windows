@@ -1,0 +1,115 @@
+# Module: windows
+# Docs: https://www.elastic.co/guide/en/beats/metricbeat/6.4/metricbeat-module-windows.html
+
+- module: windows
+  metricsets:
+    - perfmon
+  period: 30s
+  perfmon.counters:
+### Below Sets for Default Server Counter ###
+### CPU
+    - instance_label: Processor.Counter
+      instance_name: Total
+      measurement_label: Processor.Time.Total.pct
+      query: '\Processor Information(_Total)\% Processor Time'
+
+### Memory
+    - instance_label: Memory.Counter
+      measurement_label: Memory.Committed.Bytes.InUse.pct
+      query: '\Memory\% Committed Bytes In Use'
+      
+    - instance_label: Memory.Counter
+      measurement_label: Memory.Available.MBytes
+      query: '\Memory\Available MBytes'
+
+### PhysicalDiskDisk      
+    - instance_label: Physical.Disk.Counter
+      measurement_label: Current.PhysicalDisk.Queue.Length
+      query: '\PhysicalDisk(_Total)\Current Disk Queue Length'
+ 
+    - instance_label: Physical.Disk.Counter
+      measurement_label: PhysicalDisk.Read.Bytes.sec
+      query: '\PhysicalDisk(_Total)\Disk Read Bytes/sec'
+
+    - instance_label: Physical.Disk.Counter
+      measurement_label: PhysicalDisk.Write.Bytes.sec
+      query: '\PhysicalDisk(_Total)\Disk Write Bytes/sec'
+
+### LogicalDisk
+    - instance_label: Logical.Disk.Counter
+      measurement_label: LogicalDisk.Avg.Disk.Bytes.Read
+      query: '\LogicalDisk(_Total)\Avg. Disk Bytes/Read'
+	  
+    - instance_label: Logical.Disk.Counter
+      measurement_label: LogicalDisk.Avg.Disk.Bytes.Write
+      query: '\LogicalDisk(_Total)\Avg. Disk Bytes/Write'
+
+    - instance_label: Logical.Disk.Counter
+      measurement_label: LogicalDisk.Avg.Disk.Read.sec
+      query: '\LogicalDisk(_Total)\Avg. Disk sec/Read'
+
+    - instance_label: Logical.Disk.Counter
+      measurement_label: LogicalDisk.Avg.Disk.Write.sec
+      query: '\LogicalDisk(_Total)\Avg. Disk sec/Write'
+
+    - instance_label: Logical.Disk.Counter
+      measurement_label: Current.LogicalDisk.Queue.Length
+      query: '\LogicalDisk(_Total)\Current Disk Queue Length'
+
+### Network Interface
+    - instance_label: Network.Interface.Counter
+      measurement_label: Backend.Network.Interface.Bytes.Received.sec
+      query: '\Network Interface(microsoft hyper-v network adapter)\Bytes Received/sec'
+
+    - instance_label: Network.Interface.Counter
+      measurement_label: Backend.Network.Interface.Bytes.Sent.sec
+      query: '\Network Interface(microsoft hyper-v network adapter)\Bytes Sent/sec'
+
+    - instance_label: Network.Interface.Counter
+      measurement_label: Frontend.Network.Interface.Bytes.Received.sec
+      query: '\Network Interface(microsoft hyper-v network adapter _2)\Bytes Received/sec'
+
+    - instance_label: Network.Interface.Counter
+      measurement_label: Frontend.Network.Interface.Bytes.Sent.sec
+      query: '\Network Interface(microsoft hyper-v network adapter _2)\Bytes Sent/sec'
+
+### IIS Server
+    - instance_label: IIS.Counter
+      measurement_label: IIS.Current.Connections
+      query: '\Web Service(***Site Name***)\Current Connections'
+
+    - instance_label: IIS.Counter
+      measurement_label: IIS.Bytes.Received.sec
+      query: '\web service(***Site Name***)\bytes Received/sec'
+
+    - instance_label: IIS.Counter
+      measurement_label: IIS.Bytes.Sent.sec
+      query: '\web service(***Site Name***)\bytes sent/sec'
+
+    - instance_label: IIS.Counter
+      measurement_label: ASP.NET.Applications.Requests.sec
+      query: '\ASP.NET Applications(***Site Name***)\Requests/Sec'
+
+    - instance_label: IIS.Counter
+      measurement_label: ASP.NET.Applications.Requests.Succeeded
+      query: '\ASP.NET Applications(***Site Name***)\Requests Succeeded'
+
+    - instance_label: IIS.Counter
+      measurement_label: ASP.NET.Applications.Requests.TimedOut
+      query: '\ASP.NET Applications(***Site Name***)\Requests Timed Out'
+
+    - instance_label: IIS.Counter
+      measurement_label: ASP.NET.Applications.Requests.WaitTime
+      query: '\ASP.NET Applications(***Site Name***)\Request Wait Time'
+
+    - instance_label: IIS.Counter
+      measurement_label: ASP.NET.Applications.Requests.InApplicationQueue
+      query: '\ASP.NET Applications(***Site Name***)\Requests In Application Queue'
+
+    - instance_label: IIS.Counter
+      measurement_label: ASP.NET.Applications.Sessions.Active
+      query: '\ASP.NET Applications(***Site Name***)\Sessions Active'
+
+    - instance_label: IIS.Counter
+      measurement_label: ASP.NET.Applications.Sessions.TimeOut
+      query: '\ASP.NET Applications(***Site Name***)\Sessions Timed Out'
