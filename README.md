@@ -4,8 +4,8 @@
 
 
 ### 針對特定欄位進行在Kibana JSON Input 運算 ###
-# 網路流量轉換為KBytes
+#### 網路流量轉換為KBytes
 { "script" : "doc['windows.perfmon.Bytes.Received.sec'].value / 1024" }
 
-# 磁碟使用空間取"遞增"表示
+#### 磁碟使用空間取"遞增"表示
 { "script" : "100-(doc['windows.perfmon.Free.Disk.Space.pct'].value)" }
