@@ -3,8 +3,7 @@
 02. PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-metricbeat.ps1
 
 
-###### 針對特定欄位進行在Kibana JSON Input 運算 ######
-#
+### 針對特定欄位進行在Kibana JSON Input 運算 ###
 #網路流量轉換為KBytes
 { "script" : "doc['windows.perfmon.Bytes.Received.sec'].value / 1024" }
 
