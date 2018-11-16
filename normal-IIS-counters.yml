@@ -1,0 +1,48 @@
+# Module: windows
+# Docs: https://www.elastic.co/guide/en/beats/metricbeat/6.4/metricbeat-module-windows.html
+
+- module: windows
+  metricsets:
+    - perfmon
+  period: 30s
+  perfmon.counters:
+### IIS Server
+    - instance_label: IIS.Counter
+      measurement_label: IIS.Current.Connections
+      query: '\Web Service(***Site Name***)\Current Connections'
+
+    - instance_label: IIS.Counter
+      measurement_label: IIS.Bytes.Received.sec
+      query: '\web service(***Site Name***)\bytes Received/sec'
+
+    - instance_label: IIS.Counter
+      measurement_label: IIS.Bytes.Sent.sec
+      query: '\web service(***Site Name***)\bytes sent/sec'
+
+    - instance_label: IIS.Counter
+      measurement_label: ASP.NET.Applications.Requests.sec
+      query: '\ASP.NET Applications(***Site Name***)\Requests/Sec'
+
+    - instance_label: IIS.Counter
+      measurement_label: ASP.NET.Applications.Requests.Succeeded
+      query: '\ASP.NET Applications(***Site Name***)\Requests Succeeded'
+
+    - instance_label: IIS.Counter
+      measurement_label: ASP.NET.Applications.Requests.TimedOut
+      query: '\ASP.NET Applications(***Site Name***)\Requests Timed Out'
+
+    - instance_label: IIS.Counter
+      measurement_label: ASP.NET.Applications.Requests.WaitTime
+      query: '\ASP.NET Applications(***Site Name***)\Request Wait Time'
+
+    - instance_label: IIS.Counter
+      measurement_label: ASP.NET.Applications.Requests.InApplicationQueue
+      query: '\ASP.NET Applications(***Site Name***)\Requests In Application Queue'
+
+    - instance_label: IIS.Counter
+      measurement_label: ASP.NET.Applications.Sessions.Active
+      query: '\ASP.NET Applications(***Site Name***)\Sessions Active'
+
+    - instance_label: IIS.Counter
+      measurement_label: ASP.NET.Applications.Sessions.TimeOut
+      query: '\ASP.NET Applications(***Site Name***)\Sessions Timed Out'
